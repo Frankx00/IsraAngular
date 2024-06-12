@@ -1,0 +1,44 @@
+<form class="register-form" [formGroup]="registerForm">
+    <p>REGISTRARSE</p>
+    <mat-form-field class="register-input">
+      <mat-label>Name</mat-label>
+      <input matInput formControlName="name" placeholder="Ex. Frank" value="">
+    </mat-form-field>
+    <mat-form-field class="register-input">
+        <mat-label>LastName</mat-label>
+        <input matInput formControlName="lastName" placeholder="Ex. Flores" value="">
+    </mat-form-field>
+    <mat-form-field class="register-input">
+        <mat-label>Age</mat-label>
+        <input matInput formControlName="age" placeholder="Ex. 20" value="">
+    </mat-form-field>
+    <mat-form-field class="register-input">
+          <mat-label>Birthdate</mat-label>
+          <input matInput formControlName="birthdate" placeholder="Ex. 2004-01-10" value="">
+    </mat-form-field>
+    <mat-form-field class="register-input">
+        <mat-label>Email</mat-label>
+        <input type="email" matInput formControlName="email" [formControl]="emailFormControl" placeholder="Ex. frank@gmail.com" value="">
+        <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+            Please enter a valid email address
+        </mat-error>
+        <mat-error *ngIf="emailFormControl.hasError('required')">
+            Email is <strong>required</strong>
+        </mat-error>
+    </mat-form-field>
+    <mat-form-field class="register-input">
+          <mat-label>Nickname</mat-label>
+          <input matInput formControlName="nickname" placeholder="Ex. frank" value="">
+    </mat-form-field>
+    <mat-form-field class="register-input">
+        <mat-label>Phone</mat-label>
+        <input matInput formControlName="phone" #message maxlength="10" placeholder="Ex. 8715237537" value="">
+        <mat-hint align="end">{{message.value.length}} / 10</mat-hint>
+    </mat-form-field>
+    <mat-form-field class="register-input">
+          <mat-label>Password</mat-label>
+          <input type="password" matInput formControlName="password" placeholder="Ex. abcd" value="">
+    </mat-form-field>
+    <button mat-raised-button color="primary" (click)="register()">Register</button>
+   
+</form>
